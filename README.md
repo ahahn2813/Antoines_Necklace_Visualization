@@ -22,8 +22,6 @@ Antoine's Necklace is a classic example of a Cantor set in 3D space that is "tam
   </tr>
 </table>
 
-![Antoine's Necklace Render](level_2_16_and_16.png)
-
 ## 📁 Repository Structure
 
 * `Antoines_NecklaceClass.py:` The core Python class containing the mathematical logic for coordinate rotation, torus generation, and fractal levels.
