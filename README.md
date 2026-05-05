@@ -8,18 +8,19 @@ Antoine's Necklace is a classic example of a Cantor set in 3D space that is "tam
 ![Antoine's Necklace Render](antoines_necklace.png)
 
 ## 📁 Repository Structure
-Antoines_NecklaceClass.py: The core Python class containing the mathematical logic for coordinate rotation, torus generation, and fractal levels.
 
-Antoine_Necklace_Implementation.ipynb: A Jupyter Notebook containing walkthroughs and various implementations/test cases.
+* `Antoines_NecklaceClass.py:` The core Python class containing the mathematical logic for coordinate rotation, torus generation, and fractal levels.
 
-Generated Figures: High-resolution PNG renders (e.g., antoines_necklace.png) demonstrating the final output at different densities.
+* `Antoine_Necklace_Implementation.ipynb:` A Jupyter Notebook containing walkthroughs and various implementations/test cases.
+
+* Generated Figures: High-resolution PNG renders (e.g., antoines_necklace.png) demonstrating the final output at different densities.
 
 ## 🚀 Features
 Recursive Geometry: Supports Level 0 (Base Torus), Level 1 (First Chain), and Level 2 (Nested Chains).
 
 Interlocking Logic: Mathematically precise range-shifting to ensure chains pass through one another without visual gaps.
 
-Customizable Aesthetics:
+## Customizable Aesthetics:
 
 * Dual-Tone Alternating Colors: Easily toggle between single-color and alternating "sandwich" colors (e.g., Deep Blue and Burnt Orange).
 
@@ -30,30 +31,38 @@ Customizable Aesthetics:
 ## 🛠️ Installation
 Clone the repository:
 
-Bash
+
+```Bash
 git clone https://github.com/YOUR_USERNAME/Antoines_Necklace.git
 cd Antoines_Necklace
-Install dependencies:
+```
 
-Bash
+### Install dependencies:
+
+```Bash
 pip install numpy plotly kaleido
+```
 
 ## 💻 Quick Start
 You can use the class in your own scripts or the provided Jupyter Notebook:
 
-Python
+``` Python
 from Antoines_NecklaceClass import AntoineNecklace
-
-# Initialize with 16 links per level
+```
+```
+#Initialize with 16 links per level
 necklace = AntoineNecklace(N_l1=16, N_l2=16)
-
+```
+```
 # Configure for high-res export
 necklace.mesh_res = 30       # Surface smoothness
 necklace.scale = 2           # Image resolution multiplier
 necklace.file_name = "my_necklace_render.png"
-
+```
+```
 # Generate Level 2
 necklace.generate_level_two(parent_l2_C=30)
+```
 
 ⚠️ Performance Optimization
 Rendering Level 2 at 16×16 density generates nearly 500,000 vertices.
