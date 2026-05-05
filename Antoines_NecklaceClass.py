@@ -85,7 +85,7 @@ class AntoineNecklace:
             range_list = list(range(0, self.N_l1))
 
         for i in range_list:
-            # 1. Base angle around the necklace
+            # Base angle around the necklace
             alpha = (2*np.pi * i) / (self.N_l1)
             tilt = (self.tilt_angle_l1) * (i % 2)
             theta = np.linspace(0, 2*np.pi, self.mesh_res)
