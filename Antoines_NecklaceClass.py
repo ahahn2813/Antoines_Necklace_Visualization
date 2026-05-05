@@ -2,7 +2,7 @@ import numpy as np
 import plotly.graph_objects as go
 class AntoineNecklace:
     def __init__(self, N_l1=14, N_l2=14, N_l3 = 10):
-        # Attributes: These are "remembered" by the class
+        # Attributes
         self.N_l1 = N_l1
         self.N_l2 = N_l2
         self.N_l3 = N_l3
