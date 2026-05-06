@@ -9,7 +9,7 @@ Antoine's Necklace is a classic example of a Cantor set in 3D space that is "tam
 |:---:|:---:|
 | <img src="figures/level_0.png" width="400"> | <img src="figures/level_1_16.png" width="400"> |
 | **Level 2** | **Level 3** |
-| <img src="figures/level_2_16_and_16.png" width="400"> | <img src="level_3_2_and_2.png" width="400"> |
+| <img src="figures/level_2_16_and_16.png" width="400"> | <img src="figures/level_3_10_10_and_10.png.png" width="400"> |
 
 ## 📁 Repository Structure
 
