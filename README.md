@@ -3,7 +3,7 @@
 A high-performance Python implementation for generating Antoine's Necklace, a topological fractal where each component is a chain of smaller, interlocking tori. This project is optimized for Apple Silicon (M4) and high-resolution static exports using Plotly and NumPy.
 
 ## 🌀 About the Fractal
-Antoine's Necklace is a classic example of a Cantor set in 3D space that is "tame" yet topologically complex. Each level of the necklace is formed by replacing a solid torus with a chain of smaller interlocking tori. This visualization utilizes an advanced "Arch and Cradle" geometry-slicing technique to allow Level 2 chains to physically thread through the center of Level 1 links, creating a realistic "woven" appearance.
+Antoine's Necklace is a classic example of a Cantor set in 3D space that is "tame" yet topologically complex. Each level of the necklace is formed by replacing a solid torus with a chain of smaller interlocking tori. This visualization utilizes an advanced "upper and lower" geometry-slicing technique to allow Level 2 chains to physically thread through the center of Level 1 links, creating a realistic "woven" appearance. This construction allows us to easily transition to a "woven" appearance in Level 3.
 
 | Level 0 | Level 2 |
 |:---:|:---:|
@@ -20,9 +20,9 @@ Antoine's Necklace is a classic example of a Cantor set in 3D space that is "tam
 * Generated Figures: High-resolution PNG renders (e.g., antoines_necklace.png) demonstrating the final output at different densities.
 
 ## 🚀 Features
-Recursive Geometry: Supports Level 0 (Base Torus), Level 1 (First Chain), and Level 2 (Nested Chains).
+Recursive Geometry: Supports Level 0 (Base Torus), Level 1 (First Chain), Level 2, and Level 3.
 
-Interlocking Logic: Mathematically precise range-shifting to ensure chains pass through one another without visual gaps.
+Interlocking Logic: Mathematically precise rotations and translations to ensure chains pass through one another without visual gaps and are evenly placed around the circle.
 
 ## Customizable Aesthetics:
 
@@ -76,7 +76,7 @@ necklace.generate_level_two(parent_l2_C=30)
 ⚠️ Performance Optimization
 Rendering Level 2 at 16×16 density generates nearly 500,000 vertices.
 
-* M4 Users: Expect renders to complete in 1–3 minutes depending on mesh_res.
+* M4 Users: Expect renders to complete level 2 in 1–3 minutes depending on mesh_res. For level 3, reduce mesh_res to 10 or less for a rendering in under 10 minutes.
 
 * Resolution Tip: For faster development, set self.mesh_res = 15.
 
