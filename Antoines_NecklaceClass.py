@@ -15,8 +15,8 @@ class AntoineNecklace:
             [[0, '#A04606'], [1, '#A04606']]  # burnt_orange
         ]
         self.color_alt_list_l3 = [
-            [[0, '#006666'], [1, '#006666']],
-            [[0, "#A04606"], [1, "#A04606"]]  # burnt_orange
+            [[0, '#003366'], [1, '#003366']], # deep_blue
+            [[0, '#A04606'], [1, '#A04606']]  # burnt_orange
         ]
         self.color_alt_l2 = True
         self.color_alt_l3 = True
