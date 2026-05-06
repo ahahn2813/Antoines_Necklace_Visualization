@@ -22,9 +22,9 @@ Antoine's Necklace is a classic example of a Cantor set in 3D space that is "tam
 ## 🚀 Features
 ### Recursive Geometry and Interlocking Logic
 
-* **Recursive Geometry:** Supports Level 0 (Base Torus), Level 1 (First Chain), Level 2, and Level 3.
+**Recursive Geometry:** Supports Level 0 (Base Torus), Level 1 (First Chain), Level 2, and Level 3.
 
-* **Interlocking Tori:** To ensure that the tori at each level interlock and are evenly placed around the larger circle, two key components are used:
+**Interlocking Tori:** To ensure that the tori at each level interlock and are evenly placed around the larger circle, two key components are used:
 
 1. **Formula** – A formula is used to determine the outer radius of the tori at each level (i.e., `_get_small_tori_radius(...)`). For example, if $C_3$ is the radius of the level 3 tori and $N$ is the number of tori in level 3, then the radius of the level 2 tori is determined by:
 
