@@ -27,7 +27,7 @@ Interlocking Tori: To ensure that the tori at each level interlock and are evenl
 
 $$C_2 = \frac{C_3\pi}\{.8N}$$
 
-  Similarly, we have to determine the inner radius of the tori at each level. The inner radius at level $3$ would be $C_3/6,$ at level $2$ would be $C_2/6$ and so on.
+  Similarly, we have to determine the inner radius of the tori at each level. The inner radius at level $3$ would be $C_3/6,$ at level $2$ would be $C_2/6$ and so on. These two components guarentee that the tori interlock at each level like chains and do not overlap or leave gaps.
 
 2. Spacing: To ensure the tori are evenly spaced around the larger circle at each level, we divide $2\pi$ by the number of tori at the given level and place each tori based on it's angle (think polar coordinates). This is completed using repeated rotations and transfomations at each level.
 
