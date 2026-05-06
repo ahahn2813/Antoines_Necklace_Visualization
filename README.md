@@ -28,7 +28,7 @@ Antoine's Necklace is a classic example of a Cantor set in 3D space that is "tam
 
     1. **Formula** – A formula is used to determine the outer radius of the tori at each level (i.e., `_get_small_tori_radius(...)`). For example, if $C_3$ is the radius of the level 3 tori and $N$ is the number of tori in level 3, then the radius of the level 2 tori is determined by:
 
-    $$C_2 = \frac{C_3\pi}{0.8N}$$
+$$C_2 = \frac{C_3\pi}{0.8N}$$
 
     Similarly, we have to determine the inner radius of the tori at each level. The inner radius at level 3 would be $C_3/6$, at level 2 would be $C_2/6$, and so on. These two components guarantee that the tori interlock at each level like chains and do not overlap or leave gaps.
 
