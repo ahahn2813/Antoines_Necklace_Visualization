@@ -78,12 +78,12 @@ class AntoineNecklace:
 
         quarter_N = self.N_l1 // 4
         if (construct_l2_upper == False) and (construct_l2_lower == True):
-            # The 'Arch' (Top)
+            # The 'upper' (Top)
             # We start a quarter-way back and go to a quarter-way forward
             range_list = [(i % self.N_l1) for i in range(-quarter_N-1, quarter_N + 2)]
             
         elif (construct_l2_upper == True) and (construct_l2_lower == False):
-            # The 'Cradle' (Bottom)
+            # The 'lower' (Bottom)
             # We start where the top ended and complete the circle
             range_list = [(i % self.N_l1) for i in range(quarter_N+1, (self.N_l1 - quarter_N))]
             
@@ -247,7 +247,6 @@ class AntoineNecklace:
 
     def get_figure(self, fig):
         # Higher numbers move the camera further away
-        # x, y, z determine the angle
         camera = dict(eye=dict(x=self.eye[0], y=self.eye[1], z=self.eye[2]), center=dict(x=0, y=0, z=0), up=dict(x=0, y=0, z=1))
         # Remove grid lines, background planes, and labels
         fig.update_layout(scene_camera=camera, width = 2600, height = 1800, scene=dict(xaxis=dict(
@@ -271,7 +270,6 @@ class AntoineNecklace:
             paper_bgcolor=self.background_color, 
             plot_bgcolor=self.background_grid_color,
             margin=dict(l=0, r=0, b=0, t=0))
-        #fig.show()
         print("Writing to file...")
         fig.write_image(self.file_name, scale=self.scale)
         print("Image saved successfully!")
