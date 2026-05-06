@@ -8,13 +8,18 @@ class AntoineNecklace:
         self.N_l3 = N_l3
         self.tilt_angle_l1 = np.pi/2
         self.tilt_angle_l2 = np.pi/2
+        self.tilt_angle_l3 = np.pi/2
         self.lighting = [.2,.26,.3] #highlight, edge reflection, smoothness
-        self.color_alt_list = [
+        self.color_alt_list_l2 = [
             [[0, '#003366'], [1, '#003366']], # deep_blue
             [[0, '#A04606'], [1, '#A04606']]  # burnt_orange
         ]
+        self.color_alt_list_l3 = [
+            [[0, '#006666'], [1, '#006666']],
+            [[0, "#A04606"], [1, "#A04606"]]  # burnt_orange
+        ]
         self.color_alt_l2 = True
-        self.color_alt_l3 = False
+        self.color_alt_l3 = True
         self.color_choice = [[0, '#003366'], [1, '#003366']] #for just one color
         self.mesh_res = 30
         self.scale = 2
@@ -45,6 +50,7 @@ class AntoineNecklace:
         return (rotated_points[i].reshape(orig_shape) for i in range(3))
 
     # CORE METHODS: "Level" functions
+#=========================BUILDING ZERO LEVEL=================================+#
     def get_level_zero_necklace_tori(self,level_zero_toriRadius):
         theta = np.linspace(0, 2*np.pi, self.mesh_res)
         phi = np.linspace(0, 2*np.pi, self.mesh_res)
@@ -62,6 +68,7 @@ class AntoineNecklace:
         lightposition=dict(x=100, y=100, z=100)))
         return fig
 
+#=========================BUILDING FIRST LEVEL=================================+#
     def get_level_one_necklace_tori(self, parent_l1_C=14, trans = (0,0,0), global_rot = (0,0,0), construct_l2 = False, construct_l2_upper = False, construct_l2_lower = False):
         bottom_tori = []
         top_tori = []
@@ -167,8 +174,8 @@ class AntoineNecklace:
                 ), colorscale = self.color_choice,
                 lightposition=dict(x=100, y=100, z=100)))
             return fig
-
-    def get_level_two_necklace_tori(self, parent_l2_C):
+#=========================BUILDING SECOND LEVEL=================================+#
+    def get_level_two_necklace_tori(self, parent_l2_C, construct_l3 = False):
         #find inner 
         level_one_toriRadius = self._get_small_tori_radius(self.N_l2, parent_C = parent_l2_C)
         #we need to split into sideways and up and down
@@ -180,7 +187,6 @@ class AntoineNecklace:
             tilt1 = (self.tilt_angle_l2)*(i%2)
             if (i%2 == 1):
                 #split into upper and lower
-                #alpha_top = (alpha1/2)+np.pi/2
                 transx = parent_l2_C * np.cos(alpha1)
                 transy = parent_l2_C * np.sin(alpha1)
                 tori_data_upper = self.get_level_one_necklace_tori(parent_l1_C=level_one_toriRadius, global_rot = (0,tilt1,alpha1), trans = (transx,transy, 0), construct_l2 = True, construct_l2_upper = True)
@@ -192,23 +198,53 @@ class AntoineNecklace:
                 transy = parent_l2_C * np.sin(alpha1)
                 tori_data_sideways = self.get_level_one_necklace_tori(parent_l1_C=level_one_toriRadius, global_rot = (0,tilt1,alpha1), trans = (transx,transy, 0), construct_l2 = True)
                 sideways_tori.extend(tori_data_sideways)
-
-        tori_all = [lower_tori, sideways_tori, upper_tori]
+        if construct_l3 == True:
+            return [lower_tori, sideways_tori, upper_tori]
+        else:
+            tori_all = [lower_tori, sideways_tori, upper_tori]
+            fig = go.Figure()
+            for j in range(len(tori_all)):
+                if self.color_alt_l2 == True:
+                    color_scale = self.color_alt_list_l2[j%2]
+                else:
+                    color_scale = self.color_choice
+                for x, y, z in tori_all[j]:
+                    fig.add_trace(go.Surface(x=x, y=y, z=z, showscale=False, opacity=self.opacity,lighting=dict(
+                        specular=self.lighting[0],     # Increases "highlight" brightness
+                        fresnel=self.lighting[1],      # Increases edge reflections
+                        roughness=self.lighting[2]     # Makes it look smoother/shinier
+                    ), colorscale = color_scale,
+                    lightposition=dict(x=100, y=100, z=100)))
+            return fig
+#=========================BUILDING THIRD LEVEL=================================+#
+    def get_level_three_necklace_tori(self, parent_l3_C):
+        level_two_toriRadius = self._get_small_tori_radius(self.N_l3, parent_C = parent_l3_C)
         fig = go.Figure()
-        for j in range(len(tori_all)):
-            if self.color_alt_l2 == True:
-                color_scale = self.color_alt_list[j%2]
+        for i in range(self.N_l3):
+            alpha3 = (2 * np.pi * i) / self.N_l3
+            tilt3 = (self.tilt_angle_l3)*(i%2)
+            tori_all = self.get_level_two_necklace_tori(parent_l2_C = level_two_toriRadius, construct_l3 = True)
+            tori_new = []
+            if self.color_alt_l3 == True:
+                color_scale = self.color_alt_list_l3[i%2]
             else:
                 color_scale = self.color_choice
-            for x, y, z in tori_all[j]:
-                fig.add_trace(go.Surface(x=x, y=y, z=z, showscale=False, opacity=self.opacity,lighting=dict(
-                    specular=self.lighting[0],     # Increases "highlight" brightness
-                    fresnel=self.lighting[1],      # Increases edge reflections
-                    roughness=self.lighting[2]     # Makes it look smoother/shinier
-                ), colorscale = color_scale,
-                lightposition=dict(x=100, y=100, z=100)))
+            for j in range(len(tori_all)):
+                for x,y,z in tori_all[j]:
+                    transx = parent_l3_C * np.cos(alpha3)
+                    transy = parent_l3_C * np.sin(alpha3)
+                    tx, ty, tz = self.rotate_coords(x, y, z,(0,tilt3, alpha3))
+                    tx = tx + transx
+                    ty = ty + transy
+                    fig.add_trace(go.Surface(x=tx, y=ty, z=tz, showscale=False, opacity=self.opacity,lighting=dict(
+                        specular=self.lighting[0],     # Increases "highlight" brightness
+                        fresnel=self.lighting[1],      # Increases edge reflections
+                        roughness=self.lighting[2]     # Makes it look smoother/shinier
+                    ), colorscale = color_scale,
+                    lightposition=dict(x=100, y=100, z=100)))
         return fig
-    
+#===============================================================================#
+
     def get_figure(self, fig):
         # Higher numbers move the camera further away
         # x, y, z determine the angle
@@ -232,11 +268,9 @@ class AntoineNecklace:
                     showticklabels=False, 
                     showbackground=False, 
                     title=''),aspectmode='data'),
-            # Optional: Change the overall plot background color
             paper_bgcolor=self.background_color, 
             plot_bgcolor=self.background_grid_color,
-            margin=dict(l=0, r=0, b=0, t=0)
-        )
+            margin=dict(l=0, r=0, b=0, t=0))
         #fig.show()
         print("Writing to file...")
         fig.write_image(self.file_name, scale=self.scale)
@@ -257,4 +291,8 @@ class AntoineNecklace:
 
     def generate_level_two(self, parent_l2_C):
         fig = self.get_level_two_necklace_tori(parent_l2_C)
+        self.get_figure(fig)
+
+    def generate_level_three(self, parent_l3_C):
+        fig = self.get_level_three_necklace_tori(parent_l3_C)
         self.get_figure(fig)
