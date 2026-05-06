@@ -89,7 +89,7 @@ Rendering Level 2 at 16×16 density generates nearly 500,000 vertices.
 
 * M4 Users: Expect renders to complete in 1–3 minutes depending on mesh_res.
 
-* Resolution Tip: For faster development, set self.mesh_res = 15. For final "Hero" shots, use 30 or 50.
+* Resolution Tip: For faster development, set self.mesh_res = 15.
 
 HTML Note: Interactive HTML exports are disabled by default for high-density levels to prevent browser crashes; static PNG export is the recommended output.
 
