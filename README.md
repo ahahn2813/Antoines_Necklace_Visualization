@@ -5,11 +5,11 @@ A high-performance Python implementation for generating Antoine's Necklace, a to
 ## 🌀 About the Fractal
 Antoine's Necklace is a classic example of a Cantor set in 3D space that is "tame" yet topologically complex. Each level of the necklace is formed by replacing a solid torus with a chain of smaller interlocking tori. This visualization utilizes an advanced "Arch and Cradle" geometry-slicing technique to allow Level 2 chains to physically thread through the center of Level 1 links, creating a realistic "woven" appearance.
 
-| Level 0 & 1 | Level 2 |
+| Level 0 | Level 2 |
 |:---:|:---:|
 | <img src="figures/level_0.png" width="400"> | <img src="figure/level_1_16.png" width="400"> |
-| **Level 3 (Wide View)** | **Level 3 (Detail)** |
-| <img src="figures/level_2_16_and_16.png" width="400"> | <img src="level_3_render.png" width="400"> |
+| **Level 2** | **Level 3** |
+| <img src="figures/level_2_16_and_16.png" width="400"> | <img src="level_3_2_and_2.png" width="400"> |
 
 ## 📁 Repository Structure
 
