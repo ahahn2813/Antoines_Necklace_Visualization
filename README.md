@@ -37,11 +37,16 @@ Interlocking Logic: Mathematically precise range-shifting to ensure chains pass 
 
 ## Customizable Aesthetics:
 
+* Number of Tori: Select the number of tori in each level.
+  
+* Tilt Angle: Choose the angle for every other tori in each level to be tilted at (default is $\pi/2$).
+
 * Dual-Tone Alternating Colors: Easily toggle between single-color and alternating "sandwich" colors (e.g., Deep Blue and Burnt Orange).
 
 * Lighting Control: Fine-tune specular highlights, Fresnel reflections, and surface roughness.
 
 * High-Res Export: Built-in support for Kaleido to export professional-grade static images at custom scales.
+* Export Angle: Choose the "eye" or angle at which the static image is taken from.
 
 ## 🛠️ Installation
 Clone the repository:
