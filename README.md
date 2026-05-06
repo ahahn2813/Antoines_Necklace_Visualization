@@ -20,16 +20,16 @@ Antoine's Necklace is a classic example of a Cantor set in 3D space that is "tam
 * Generated Figures: High-resolution PNG renders (e.g., antoines_necklace.png) demonstrating the final output at different densities.
 
 ## 🚀 Features
-Recursive Geometry: Supports Level 0 (Base Torus), Level 1 (First Chain), Level 2, and Level 3.
+* **Recursive Geometry:** Supports Level 0 (Base Torus), Level 1 (First Chain), Level 2, and Level 3.
 
-Interlocking Tori: To ensure that the tori at each level interlock and are evenly placed around the larger circle, two key compenents are used:
-1. Formula - A formula is used to determine the outer radius of the tori at each level (i.e., ``_get_small_tori_radius(...)``). For example, if $C_3$ is the radius of the level $3$ tori and $N$ is the number of tori in level $3,$ then the radius of the level $2$ tori is determined by:
+* **Interlocking Tori:** To ensure that the tori at each level interlock and are evenly placed around the larger circle, two key compenents are used:
+  1. Formula - A formula is used to determine the outer radius of the tori at each level (i.e., ``_get_small_tori_radius(...)``). For example, if $C_3$ is the radius of the level $3$ tori and $N$ is the number of tori in level $3,$ then the radius of the level $2$ tori is determined by:
 
-$$C_2 = \frac{C_3\pi}\{.8N}$$
+  $$C_2 = \frac{C_3\pi}\{.8N}$$
 
-  Similarly, we have to determine the inner radius of the tori at each level. The inner radius at level $3$ would be $C_3/6,$ at level $2$ would be $C_2/6$ and so on. These two components guarentee that the tori interlock at each level like chains and do not overlap or leave gaps.
+    Similarly, we have to determine the inner radius of the tori at each level. The inner radius at level $3$ would be $C_3/6,$ at level $2$ would be $C_2/6$ and so on. These two components guarentee that the tori interlock at each level like chains and do not overlap or leave gaps.
 
-2. Spacing: To ensure the tori are evenly spaced around the larger circle at each level, we divide $2\pi$ by the number of tori at the given level and place each tori based on it's angle (think polar coordinates). This is completed using repeated rotations and transfomations at each level.
+  2. Spacing - To ensure the tori are evenly spaced around the larger circle at each level, we divide $2\pi$ by the number of tori at the given level and place each tori based on it's angle (think polar coordinates). This is completed using repeated rotations and transfomations at each level.
 
 ## Customizable Aesthetics:
 
