@@ -3,7 +3,7 @@
 A high-performance Python implementation for generating Antoine's Necklace, a topological fractal where each component is a chain of smaller, interlocking tori. This project is optimized for Apple Silicon (M4) and high-resolution static exports using Plotly and NumPy.
 
 ## 🌀 About the Fractal
-Antoine's Necklace is a classic example of a Cantor set in 3D space that is "tame" yet topologically complex. Each level of the necklace is formed by replacing a solid torus with a chain of smaller interlocking tori. This visualization utilizes an advanced "upper and lower" geometry-slicing technique to allow Level 2 chains to physically thread through the center of Level 1 links, creating a realistic "woven" appearance. This construction allows us to easily transition to a "woven" appearance in Level 3.
+Antoine's Necklace is a classic example of a Cantor set in 3D space that is topologically complex. Each level of the necklace is formed by replacing a solid torus with a chain of smaller interlocking tori. This visualization utilizes an advanced "upper and lower" geometry-slicing technique to allow Level 2 chains to physically thread through the center of Level 1 links, creating a realistic "woven" appearance. This construction allows us to easily transition to a "woven" appearance in Level 3.
 
 | Level 0 | Level 1 |
 |:---:|:---:|
