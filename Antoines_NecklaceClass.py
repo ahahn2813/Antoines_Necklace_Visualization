@@ -1,7 +1,7 @@
 import numpy as np
 import plotly.graph_objects as go
 class AntoineNecklace:
-    def __init__(self, N_l1=14, N_l2=14, N_l3 = 10):
+    def __init__(self, N_l1=14, N_l2=14, N_l3 = 12):
         # Attributes
         self.N_l1 = N_l1
         self.N_l2 = N_l2
@@ -31,8 +31,11 @@ class AntoineNecklace:
         self.background_grid_color = "white"
 
     # INTERNAL METHODS
-    def _get_small_tori_radius(self,N, parent_C):
-        small_c = (parent_C*np.pi)/(.8*N)
+    def _get_small_tori_radius(self,N, parent_C, construct_l2 = True):
+        if construct_l2 == False:
+            small_c = (parent_C*np.pi)/(.8*N)
+        else:
+            small_c = (parent_C*np.pi)/(.7*N)
         return small_c
     
 
@@ -55,7 +58,7 @@ class AntoineNecklace:
         theta = np.linspace(0, 2*np.pi, self.mesh_res)
         phi = np.linspace(0, 2*np.pi, self.mesh_res)
         theta, phi = np.meshgrid(theta, phi)
-        small_a = level_zero_toriRadius/6
+        small_a = level_zero_toriRadius/7.5
         x = (level_zero_toriRadius + small_a * np.cos(theta)) * np.cos(phi)
         y = (level_zero_toriRadius + small_a * np.cos(theta)) * np.sin(phi)
         z = small_a * np.sin(theta)
@@ -73,8 +76,8 @@ class AntoineNecklace:
         bottom_tori = []
         top_tori = []
         side_tori = []
-        small_l1_c = self._get_small_tori_radius(self.N_l1, parent_l1_C)
-        small_a = small_l1_c/6
+        small_l1_c = self._get_small_tori_radius(self.N_l1, parent_l1_C, construct_l2 = False)
+        small_a = small_l1_c/7.5
 
         quarter_N = self.N_l1 // 4
         if (construct_l2_upper == False) and (construct_l2_lower == True):
