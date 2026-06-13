@@ -1,7 +1,8 @@
 import numpy as np
 import plotly.graph_objects as go
+from tqdm.notebook import tqdm
 class AntoineNecklace:
-    def __init__(self, N_l1=14, N_l2=14, N_l3 = 12):
+    def __init__(self, N_l1=14, N_l2=14, N_l3 = 16):
         # Attributes
         self.N_l1 = N_l1
         self.N_l2 = N_l2
@@ -93,7 +94,7 @@ class AntoineNecklace:
         else:
             # Standalone Level 1: Full circle
             range_list = list(range(0, self.N_l1))
-
+        
         for i in range_list:
             # Base angle around the necklace
             alpha = (2*np.pi * i) / (self.N_l1)
@@ -169,6 +170,7 @@ class AntoineNecklace:
         else:
             fig = go.Figure()
             tori_data = bottom_tori+side_tori+top_tori
+            # for x, y, z in tqdm(tori_data, desc="Adding Torus Surfaces"):
             for x, y, z in tori_data:
                 fig.add_trace(go.Surface(x=x, y=y, z=z, showscale=False, opacity=self.opacity,lighting=dict(
                     specular=self.lighting[0],     # Increases "highlight" brightness
@@ -252,7 +254,8 @@ class AntoineNecklace:
         # Higher numbers move the camera further away
         camera = dict(eye=dict(x=self.eye[0], y=self.eye[1], z=self.eye[2]), center=dict(x=0, y=0, z=0), up=dict(x=0, y=0, z=1))
         # Remove grid lines, background planes, and labels
-        fig.update_layout(scene_camera=camera, width = 2600, height = 1800, scene=dict(xaxis=dict(
+        #2600, 1800
+        fig.update_layout(scene_camera=camera, width = 1500, height = 1400, scene=dict(xaxis=dict(
                     showgrid=False, 
                     zeroline=False, 
                     showticklabels=False, 
@@ -273,6 +276,7 @@ class AntoineNecklace:
             paper_bgcolor=self.background_color, 
             plot_bgcolor=self.background_grid_color,
             margin=dict(l=0, r=0, b=0, t=0))
+
         print("Writing to file...")
         fig.write_image(self.file_name, scale=self.scale)
         print("Image saved successfully!")
