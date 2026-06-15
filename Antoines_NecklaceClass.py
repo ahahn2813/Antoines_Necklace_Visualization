@@ -285,7 +285,7 @@ class AntoineNecklace:
             fig.write_html("necklace_render.html")
             print("Writing to html")
 
-    # Functions meant for user to call
+    # Functions meant for user to call #
     def generate_level_zero(self, parent_l0_C):
         fig  = self.get_level_zero_necklace_tori(parent_l0_C)
         self.get_figure(fig)
